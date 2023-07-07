@@ -12,46 +12,39 @@ class Dino{
  const anklyosaurus=new Dino('anklyosaurus','anklyosaurus.png',"Night vision");
 
     // Create Human Object
-     class Human {
+   
+   class HumanObject {
     constructor(name, height, weight) {
         this.name = name;
         this.height = height;
         this.weight = weight;
-
     }
-};
+}
+
  
 
 
     // Use IIFE to get human data from form
-   const getHumanData= (function () {
-    var HumanName='' ;
-        let height='' ;
-        let weight='';
-    let button= document.getElementById('btn');
-    button.addEventListener('click',function(){
-         HumanName =document.getElementById('name').value;
-         console.log(`internal ${HumanName}`);
-    });
+    const button= document.getElementById('btn');
+var human=[];
+   button.addEventListener('click',(function(){
         
-        function getName(){
-            console.log(`Data: ${HumanName}`)
+        return function (){
+         HumanName =document.getElementById('name').value;
+         ft =document.getElementById('feet').value;
+         inches =document.getElementById('inches').value;
+         height=ft+"\""+inches+"\'";
+         weight =document.getElementById('weight').value;
+       
+        hum= new HumanObject(HumanName,height,weight);
+        human.push(hum);
+        console.log(human[0]);
+          
+        } 
+        
+    })());
 
-            return HumanName;
-        }
-        // function getHeight(){
-        //     return height;
-        // }
-        // function getWeight(){
-        //     return weight;
-        // }
-        return{
-            name:getName,
-            // height:getHeight,
-            // weight:getWeight
-        };
-    })();
- console.log(`Data: ${getHumanData.name()}`)
+ console.log(`Data: ${human}`)
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches. 
 
